@@ -1,10 +1,38 @@
 <template name="content">
     <div class="container">
+        <div id="content">
+            <form action="" class="form-inline">
+                <div class="form-group">
+                    <label for="task">Task Name</label>
+                    <input type="text" class="form-control" name="task">
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+            <br>
 
-        <div class="starter-template">
-            <h1>Bootstrap starter template</h1>
-            <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    {{#each table_head}}
+                        {{>th}}
+                    {{/each}}
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td><span class="glyphicon glyphicon-edit"></span></td>
+                    <td><span class="glyphicon glyphicon-remove-sign"></span></td>
+                </tr>
+
+                </tbody>
+            </table>
+
         </div>
-
     </div><!-- /.container -->
+</template>
+
+<template name="th">
+    <th>{{th}}</th>
 </template>
