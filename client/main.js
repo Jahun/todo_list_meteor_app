@@ -1,27 +1,31 @@
-import {Template} from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var'
-
-import '/client/views/templates/header.html';
 import '/client/views/index.html';
 document.title = "Todo List";
 
-/**************Header******************/
-Template.header.helpers({
-    project_name: "Todo List",
-});
-/*********End Header******************/
-
-/****************Content****************/
 Template.content.helpers({
-    table_head:
-        [
-            {th:"id"},
-            {th:"Task name"},
-            {th:"Edit"},
-            {th:"Delete"},
-        ]
+    todo_item: function () {
+        return todo_list.find({}, {sort: {created_date: -1}});
+    }
 
 });
-/****************End Content****************/
 
+Template.content.events({
+    'keyup #enter_task': function (event) {
+        if (event.which == 13) {
+            var val = event.target.value.trim();
+            var now = new Date();
+            if (val!='') {
+                todo_list.insert({
+                    name: val,
+                    created_date: ((now.getDay() < 10) ? '0' + now.getDay() : now.getDay()) + '/'
+                    + (now.getMonth() + 1) + '/'
+                    + now.getFullYear() + ' '
+                    + now.getHours() + ':'
+                    + now.getMinutes() + ':'
+                    + ((now.getSeconds() < 10) ? '0' + now.getSeconds() : now.getSeconds())
+                });
+                event.target.value = '';
 
+            }
+        }
+    }
+});

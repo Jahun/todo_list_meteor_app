@@ -1,0 +1,124 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Calibri;
+    list-style: none;
+}
+
+body {
+    background-color: #21a5b8;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+#content {
+    max-width: 40%;
+    min-height: 100px;
+    background-color: #f4f4f4;
+    margin: 10px auto;
+    padding: 15px 10px;
+    border-radius: 5px;
+    -webkit-box-shadow: -1px 3px 30px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: -1px 3px 30px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: -1px 3px 30px 0px rgba(50, 50, 50, 0.75);
+}
+
+@media (max-width: 768px) {
+    #content {
+        max-width: 80%;
+    }
+}
+
+h2 {
+    color: #616161;
+}
+
+hr {
+    margin-top: 10px;
+}
+
+.task-list {
+    display: block;
+    width: 100%;
+    padding: 5px 5px 0px 5px;
+    box-sizing: border-box;
+}
+
+.task-list li {
+    width: 100%;
+    min-height: 30px;
+    padding: 5px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-bottom: 1px #D7CCC8 solid;
+
+}
+
+.task-list li * {
+    float: left;
+}
+
+.task-list li label {
+    margin-left: 10px;
+    font-size: 18px;
+}
+.task-list li label p{
+    font-size: 14px;
+    margin-top: 4px;
+    margin-left: 5px;
+    font-style: italic;
+}
+
+.task-list li input {
+    margin-top: 5px;
+}
+
+
+
+.delete-task {
+    float: right !important;
+    font-size: 12px;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 50%;
+    padding: 1px 5px 1px 5px;
+    outline: 0px;
+    border: 1px #f4f4f4 solid;
+    color: #f4f4f4;
+    background-color: #795548;
+    -webkit-transition: color 0.4s, background-color 0.4s, border 0.4s; /* Safari */
+    transition: color 0.4s, background-color 0.4s, border 0.4s;
+}
+
+.delete-task:hover{
+    border-color: #795548;
+    background-color: #f4f4f4;
+    color: #795548;
+}
+.delete-task:active {
+    border-color: #f4f4f4;
+    color: #f4f4f4;
+    background-color: #795548
+}
+
+#enter_task {
+    width: 100%;
+    outline: 0;
+    border: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 5px;
+    font-size: 16px;
+    background-color: #f4f4f4;
+    margin-bottom: 20px;
+    -webkit-transition: border 0.4s; /* Safari */
+    transition: border 0.4s;
+    border-bottom: 1px #CFD8DC solid;
+}
+
+#enter_task:focus {
+    border-bottom: 1px #21a5b8 solid;
+}
