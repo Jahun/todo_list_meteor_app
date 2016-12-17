@@ -3,7 +3,7 @@ document.title = "Todo List";
 
 Template.content.helpers({
     todo_item: function () {
-        return todo_list.find({}, {sort: {created_date: -1}});
+        return todo_list.find({}, {sort: {id: -1}});
     }
 
 });
@@ -13,8 +13,16 @@ Template.content.events({
         if (event.which == 13) {
             var val = event.target.value.trim();
             var now = new Date();
-            if (val!='') {
+            var collectionIsEmpty=(todo_list.find().count()==0);
+            var id=1;
+            if(!collectionIsEmpty) {
+                var ft = todo_list.findOne({}, {sort: {id: -1}});
+                id=parseInt(ft.id) + 1;
+            }
+
+            if (val != '') {
                 todo_list.insert({
+                    id: id,
                     name: val,
                     created_date: ((now.getDay() < 10) ? '0' + now.getDay() : now.getDay()) + '/'
                     + (now.getMonth() + 1) + '/'
@@ -26,6 +34,15 @@ Template.content.events({
                 event.target.value = '';
 
             }
+        }
+    },
+
+    'click .delete-task': function (event) {
+        event.preventDefault();
+        var id = this._id;
+        var c = confirm("Delete? - " + this.id);
+        if (c) {
+            todo_list.remove({_id: id});
         }
     }
 });
